@@ -36,6 +36,9 @@ export function BookOverview({ title, author, genre, rating, totalCopies, availa
                     <div className="absolute left-16 top-10 rotate-12 opacity-40 max-sm:hidden">
                         <BookCover variant={'wide'} className={''} coverColor={coverColor} coverUrl={coverUrl} />
                     </div>
+                    {/* <div className="absolute right-16 top-10 -rotate-12 opacity-40 max-sm:hidden">
+                        <BookCover variant={'wide'} className={''} coverColor={coverColor} coverUrl={coverUrl} />
+                    </div> */}
                 </div>
             </div>
         </section>
