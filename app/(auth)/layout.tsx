@@ -6,7 +6,7 @@ import { ReactNode } from "react";
 export default async function AuthLayout({ children }: { children: ReactNode }) {
 
     const session = await auth()
-    if (session) redirect('/')
+    if (session) return redirect('/')
 
     return (
         <main className="auth-container">

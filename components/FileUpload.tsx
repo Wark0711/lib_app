@@ -10,7 +10,7 @@ import { useRef, useState } from "react";
 const authenticator = async () => {
     try {
         const response = await fetch(`${config.env.apiEndpoint}/api/auth/imagekit`)
-        
+
         if (!response.ok) {
             const errorText = await response.text()
             throw new Error(`Request failed with status ${response.status}: ${errorText}`,);
@@ -43,7 +43,7 @@ const {
     },
 } = config;
 
-export function ImageUpload({
+export function FileUpload({
     type,
     accept,
     placeholder,
@@ -58,10 +58,7 @@ export function ImageUpload({
     const [progress, setProgress] = useState(0);
 
     const styles = {
-        button:
-            variant === "dark"
-                ? "bg-dark-300"
-                : "bg-light-600 border-gray-100 border",
+        button: variant === "dark" ? "bg-dark-300" : "bg-light-600 border-gray-100 border",
         placeholder: variant === "dark" ? "text-light-100" : "text-slate-500",
         text: variant === "dark" ? "text-light-100" : "text-dark-400",
     };

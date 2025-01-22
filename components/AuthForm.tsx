@@ -8,9 +8,9 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, For
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { FIELD_NAMES, FIELD_TYPES } from "@/constants";
-import { ImageUpload } from "./ImageUpload";
 import { toast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
+import { FileUpload } from "./FileUpload";
 
 interface Props<T extends FieldValues> {
     schema: ZodType<T>;
@@ -78,7 +78,7 @@ export function AuthForm<T extends FieldValues>({ type, schema, defaultValues, o
                                             <FormLabel className="capitalize">{FIELD_NAMES[field.name as keyof typeof FIELD_NAMES]}</FormLabel>
                                             <FormControl>
                                                 {field.name === "universityCard" ? (
-                                                    <ImageUpload
+                                                    <FileUpload
                                                         type="image"
                                                         accept="image/*"
                                                         placeholder="Upload your ID"
