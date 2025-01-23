@@ -59,3 +59,8 @@ export const signUp = async (params: AuthCredentials) => {
         return { success: false, error: 'Signup error' }
     }
 }
+
+export const userDetails = async (id: string) => {
+    const [user] = await db.select().from(users).where(eq(users.id, id)).limit(1)
+    return user
+}
