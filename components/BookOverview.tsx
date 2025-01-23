@@ -1,8 +1,25 @@
 import Image from "next/image";
 import { Button } from "./ui/button";
 import { BookCover } from "./BookCover";
+import { BorrowBook } from "./BorrowBook";
+import { userDetails } from "@/lib/actions/auth";
 
-export function BookOverview({ title, author, genre, rating, totalCopies, availableCopies, description, coverColor, coverUrl }: Book) {
+interface Props extends Book {
+    userId: string
+}
+
+export async function BookOverview({ title, author, genre, rating, totalCopies, availableCopies, description, coverColor, coverUrl, id, userId }: Props) {
+
+    const user = await userDetails(userId)
+
+    const borrowingEligibility = {
+        isEligible: availableCopies > 0 && user?.status === "APPROVED",
+        message:
+            availableCopies <= 0
+                ? "Book is not available"
+                : "You are not eligible to borrow this book",
+    }
+
     return (
         <section className="book-overview">
             <div className="flex flex-1 flex-col gap-5">
@@ -23,11 +40,7 @@ export function BookOverview({ title, author, genre, rating, totalCopies, availa
                 </div>
 
                 <p className="book-description">{description}</p>
-
-                <Button className="book-overview_btn">
-                    <Image src={'/icons/book.svg'} alt="book" height={20} width={20} />
-                    <p className="font-bebas-neue text-xl text-dark-100">Borrow</p>
-                </Button>
+                {user && <BorrowBook bookId={id} userId={userId} borrowingEligibility={borrowingEligibility} /> }
             </div>
 
             <div className="relative flex flex-1 justify-center">

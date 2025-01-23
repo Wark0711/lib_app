@@ -2,8 +2,9 @@
 
 import { db } from "@/database/drizzle";
 import { books, users } from "@/database/schema";
-import { eq } from "drizzle-orm";
+import { desc, eq } from "drizzle-orm";
 import { Session } from "next-auth";
+import { redirect } from "next/navigation";
 
 export const createBook = async (params: BookParams) => {
     try {
@@ -22,4 +23,21 @@ export const checkForAdmin = async (session: Session) => {
 
     const isAdmin = await db.select({ isAdmin: users.role }).from(users).where(eq(users.id, session.user.id)).limit(1).then(res => res[0]?.isAdmin === 'ADMIN')
     return isAdmin
+}
+
+export const getLatestBooks = async () => {
+    const latestBooks: Book[] = await db.select().from(books).limit(11).orderBy(desc(books.createdAt))
+    return latestBooks
+}
+
+export const getAllBooks = async () => {
+    const allBooks: Book[] = await db.select().from(books).orderBy(desc(books.createdAt))
+    return allBooks
+}
+
+export const getBookDetails = async (id: string) => {
+    const [getDetails] = await db.select().from(books).where(eq(books.id, id)).limit(1)
+    if (!getDetails) return redirect('/404')
+
+    return getDetails
 }
