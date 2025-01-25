@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
+  <h3 align="center">Library Management System with Admin Panel</h3>
+</div>
 
-## Getting Started
+## <a name="introduction">Introduction</a>
 
-First, run the development server:
+Built with Next.js, TypeScript, and Postgres, the Library Management System is a production-grade platform featuring a public-facing app and an admin interface. It offers advanced functionalities like seamless book borrowing, robust user management and an optimized tech stack.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## <a name="features">Features</a>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+➢ **Authentication**: Implements authentication and authorization features using Next Auth, allowing users to securely log in via traditional email and password methods.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+➢ **Homepage**: Highlighted books and newly added books with 3D effects.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+➢ **Book Detail Pages**: Availability tracking, book summaries, videos, and suggestions for similar books. Also available for admin users.
 
-## Learn More
+➢ **Book Management Forms**: Add new books and edit existing entries.
 
-To learn more about Next.js, take a look at the following resources:
+➢ **Borrow Records Page**: Complete borrow history with pagination and search.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+➢ **Advanced Functionalities**: Caching, rate-limiting, DDoS protection, and custom notifications.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+➢ **Real-time Media Processing**: ImageKit for image and video optimization and transformations.
 
-## Deploy on Vercel
+➢ **Efficient Caching**: Upstash Redis for caching, workflows, and triggers.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## <a name="tech-stack">Tech Stack</a>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Next.js
+- TypeScript
+- Tailwind CSS
+- Next Auth
+- Shadcn UI
+- Neon PostgreSQL
+- Drizzle ORM
+- Upstash
+- ImageKit
